@@ -1,7 +1,6 @@
 package pl.pp.spring.jokeswebapp.services;
 
 import pl.pp.spring.jokeswebapp.model.Joke;
-
 import java.util.List;
 
 public interface JokeService {

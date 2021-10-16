@@ -1,17 +1,18 @@
 package pl.pp.spring.jokeswebapp.services;
 
+import org.springframework.stereotype.Service;
 import pl.pp.spring.jokeswebapp.model.Joke;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class JokeMapService implements JokeService {
 
-    public Map<Long, Joke> jokeMap;
-
+    public Map<Long, Joke> jokeMap = new HashMap<>();
     //nadpisane metody z zaimplementowanego serwisu
-
     //metoda podająca wszystkie wartości z mapy
     @Override
     public List<Joke> findAll() {
