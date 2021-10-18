@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- do używania thymeleaf zamiast JSP -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Suchary</title>
 </head>
 <body>
     <h1>Witaj na stronie z sucharami</h1>
+    <!-- iteracja po atrybucie jokes-->
+    <div th:each="joke: ${jokes}">
+        <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - tytuł-->
+        <h2 th:text="${joke.title}">Tytuł</h2>
+        <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - zawartośc-->
+        <pre th:text="${joke.content}">Content</pre>
+    </div>
+
 </body>
 </html>

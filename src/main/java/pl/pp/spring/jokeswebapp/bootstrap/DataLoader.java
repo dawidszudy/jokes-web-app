@@ -20,18 +20,18 @@ public class DataLoader implements CommandLineRunner {
 
         Joke joke1 = new Joke();
         joke1.setTitle("Okup za teściową");
-        joke1.setContent("Mężczyzna odbiera telefon:\\n\" +\n" +
-                "                \"-Słucham\\n\" +\n" +
-                "                \"*Mamy twoją teściową. musisz zapłacić 100 000 zł okupu - słyszy w telefonie.\\n\" +\n" +
-                "                \"-A co jeśli nie zapłacę? - Zastanawia się mężczyzna.\\n\" +\n" +
-                "                \"*To ją sklonujemy! - odpowiada porywacz.");
+        joke1.setContent("Mężczyzna odbiera telefon:\n" +
+                "-Słucham\n" +
+                "*Mamy twoją teściową. musisz zapłacić 100 000 zł okupu - słyszy w telefonie.\n" +
+                "-A co jeśli nie zapłacę? - Zastanawia się mężczyzna.\n" +
+                "*To ją sklonujemy! - odpowiada porywacz.");
 
         Joke joke2 = new Joke();
         joke2.setTitle("Jaś i Partia");
-        joke2.setContent("Nauczycielka: Drogie dzieci, partia jest dla nas jak najlepszy przyjaciel.\\n\" +\n" +
-                "                \"Jaś: Proszę Pani! Partia jest dla nas jak brat.\\n\" +\n" +
-                "                \"Nauczycielka: Brawo Jasiu. Brawo! Wyjaśnij wszystkim dzieciom dlaczego partia jest dla nas jak brat.\\n\" +\n" +
-                "                \"Jaś: A bo przyjaciela można wybrać, a brat jaki się pieron trafi z takim trzeba żyć.");
+        joke2.setContent("-Drogie dzieci, partia jest dla nas jak najlepszy przyjaciel.\n" +
+                "*Proszę Pani! Partia jest dla nas jak brat.\n" +
+                "-Brawo Jasiu. Brawo! Wyjaśnij wszystkim dzieciom dlaczego partia jest dla nas jak brat.\n" +
+                "*A bo przyjaciela można wybrać, a brat jaki się pieron trafi z takim musisz wytrzymać.");
 
         jokeService.save(joke1);
         jokeService.save(joke2);
