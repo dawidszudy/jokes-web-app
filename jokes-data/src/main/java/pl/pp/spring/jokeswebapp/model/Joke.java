@@ -1,10 +1,12 @@
 package pl.pp.spring.jokeswebapp.model;
 
-public class Joke {
+import java.util.List;
 
+public class Joke {
     private Long id;
     private String title;
     private String content;
+    private List<Category> categories;
 
 
     public Joke() {
@@ -39,6 +41,14 @@ public class Joke {
         this.content = content;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public String toString() {
         return "Joke{" +
@@ -47,5 +57,7 @@ public class Joke {
                 ", content='" + content + '\'' +
                 '}';
     }
+
+
 
 }
