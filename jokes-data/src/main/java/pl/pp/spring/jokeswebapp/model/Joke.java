@@ -1,12 +1,14 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class Joke extends BaseEntity {
 
     private String title;
     private String content;
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 
 
     public Joke() {

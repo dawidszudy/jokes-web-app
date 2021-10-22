@@ -5,6 +5,4 @@ import pl.pp.spring.jokeswebapp.model.Joke;
 
 public interface JokeService extends BaseService<Joke> {
 
-    //List<Joke> findAll();
-    //Joke save(Joke joke);
 }
