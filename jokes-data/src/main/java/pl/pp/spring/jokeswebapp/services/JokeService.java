@@ -2,11 +2,9 @@ package pl.pp.spring.jokeswebapp.services;
 
 import pl.pp.spring.jokeswebapp.model.Joke;
 
-import java.util.List;
 
-public interface JokeService {
+public interface JokeService extends BaseService<Joke> {
 
-    List<Joke> findAll();
-
-    Joke save(Joke joke);
+    //List<Joke> findAll();
+    //Joke save(Joke joke);
 }
