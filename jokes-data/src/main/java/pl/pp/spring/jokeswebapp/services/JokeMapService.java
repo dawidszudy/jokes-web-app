@@ -11,7 +11,8 @@ import java.util.Map;
 @Service
 public class JokeMapService implements JokeService {
 
-    public Map<Long, Joke> jokeMap = new HashMap<>();
+    private Map<Long, Joke> jokeMap = new HashMap<>();
+
     //nadpisane metody z zaimplementowanego serwisu
     //metoda podająca wszystkie wartości z mapy
     @Override
@@ -22,7 +23,7 @@ public class JokeMapService implements JokeService {
     //metoda zamieniająca lub zapisująca parę klucz - wartość
     @Override
     public Joke save(Joke joke) {
-        if (joke.getId() == null) { //save
+        if ( joke.getId() == null ) { //save
             Long maxId = jokeMap.keySet().stream().max(Long::compare).orElse(1L);
             joke.setId(maxId + 1);
         }
