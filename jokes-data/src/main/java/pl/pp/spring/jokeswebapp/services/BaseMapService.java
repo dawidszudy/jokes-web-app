@@ -19,7 +19,7 @@ public abstract class BaseMapService<E extends BaseEntity> implements BaseServic
     @Override
     public E save(E entity) {
         if ( entity.getId() == null ) {
-            Long maxId = map.keySet().stream().max(Long::compare).orElse(1L);
+            Long maxId = map.keySet().stream().max(Long::compare).orElse(0L);
             entity.setId(maxId + 1);
         }
         map.put(entity.getId(), entity);

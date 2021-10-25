@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Suchary</title>
-    <!-- połączenie do pliku css -->
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
     <div id="wrapper">
-        <h1>Witaj na stronie z sucharami</h1>
-    <!-- iteracja po atrybucie jokes-->
-        <div class="joke" th:each="joke: ${jokes}">
-        <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - tytuł-->
-            <h2 class="title" th:text="${joke.title}">Tytuł</h2>
-        <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - zawartośc-->
-            <pre class="content" th:text="${joke.content}">Content</pre>
+        <h1 class="header">Witaj na stronie z sucharami</h1>
+
+        <div id="categories">
+            <h3 class="header">Kategorie</h3>
+            <div class="category" th:each="category: ${categories}" th:text="${category.name}">
+                kategoria
+            </div>
+
         </div>
+
+        <div id="jokes">
+            <!-- iteracja po atrybucie jokes-->
+            <div class="joke" th:each="joke: ${jokes}">
+                <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - tytuł-->
+                <h2 class="title" th:text="${joke.title}">Tytuł</h2>
+                <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - zawartośc-->
+                <pre class="content" th:text="${joke.content}">Content</pre>
+            </div>
+        </div>
+        <div class="clear: both;"></div>
     </div>
 </body>
 </html>
