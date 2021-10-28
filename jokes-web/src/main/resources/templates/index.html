@@ -9,7 +9,7 @@
 <body>
     <div id="wrapper">
         <h1 class="header">Witaj na stronie z sucharami</h1>
-
+        <a class="inner-link" th:href="@{/jokes/add}"><div class="add-button">Dodaj nowy żart</div></a>
         <div id="categories">
             <h3 class="header">Kategorie</h3>
             <div class="category" th:each="category: ${categories}" th:text="${category.name}">

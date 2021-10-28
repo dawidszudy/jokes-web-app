@@ -17,6 +17,25 @@ body {
     text-align: center;
 }
 
+.add-button {
+    background-color: #00BB00;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    padding: 3px;
+    text-align: center;
+}
+
+.add-button:hover {
+    background-color: #00AA00;
+    cursor: pointer;
+}
+
+.inner-link {
+    color: black;
+    text-decoration: none;
+}
+
 .category{
     border: 1px solid black;
     border-radius: 5px;
