@@ -12,14 +12,15 @@
     <a class="inner-link" th:href="@{/index}"><div class="add-button" id="back-button">Powrót</div></a>
 
     <div id="form-container">
-        <form>
-            <input type="text" placeholder="tytuł">
-            <textarea rows="7" placeholder="żart"></textarea>
+                <!-- gdzie zostanie przekierowane -->
+        <form method="post" th:action="@{/jokes/add}" th:object="${joke}">
+            <input type="text" placeholder="tytuł" th:field="*{title}">
+            <textarea rows="7" placeholder="żart" th:field="*{content}"></textarea>
 
             <h3>Kategorie</h3>
 
             <div th:each="category : ${categories}">
-                <input th:attr="id=${category.id}" type="checkbox">
+                <input th:attr="id=${category.id}" type="checkbox" name="category" th:value="${category.id}">
                 <label th:attr="for=${category.id}" th:text="${category.name}">Kategoria</label>
             </div>
 

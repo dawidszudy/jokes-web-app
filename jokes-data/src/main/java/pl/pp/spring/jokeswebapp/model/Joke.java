@@ -51,6 +51,4 @@ public class Joke extends BaseEntity {
                 ", content='" + content + '\'' +
                 '}';
     }
-
-
 }

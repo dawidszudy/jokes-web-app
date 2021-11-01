@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 import pl.pp.spring.jokeswebapp.services.JokeService;
 
-@Controller //adnotacja (zamiast @Component)
+@Controller
 public class IndexController {
 
     private final JokeService jokeService;
@@ -17,12 +17,10 @@ public class IndexController {
         this.categoryService = categoryService;
     }
 
-    @RequestMapping({"", "/", "/index"})    //jakie requesty przypisane
-    public String showIndex(Model model) {      //metoda odwołująca się do pliku html
-        //Joke joke = jokeService.findAll().get(0);
-        //ustawienie atrybutu
+    @RequestMapping({"", "/", "/index"})
+    public String showIndex(Model model) {
         model.addAttribute("jokes", jokeService.findAll());
         model.addAttribute("categories", categoryService.findAll());
-        return "index";              //nazwa bez .html
+        return "index";
     }
 }

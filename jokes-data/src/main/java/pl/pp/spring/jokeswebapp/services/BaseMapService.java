@@ -17,6 +17,11 @@ public abstract class BaseMapService<E extends BaseEntity> implements BaseServic
     }
 
     @Override
+    public E findById(Long id) {
+        return map.get(id);
+    }
+
+    @Override
     public E save(E entity) {
         if ( entity.getId() == null ) {
             Long maxId = map.keySet().stream().max(Long::compare).orElse(0L);

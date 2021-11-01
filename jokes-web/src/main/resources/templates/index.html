@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- do używania thymeleaf zamiast JSP -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -19,11 +18,8 @@
         </div>
 
         <div id="jokes">
-            <!-- iteracja po atrybucie jokes-->
             <div class="joke" th:each="joke: ${jokes}">
-                <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - tytuł-->
                 <h2 class="title" th:text="${joke.title}">Tytuł</h2>
-                <!-- odwołanienie do nazwy atrybutu i uzyskanie jego wartości - zawartośc-->
                 <pre class="content" th:text="${joke.content}">Content</pre>
             </div>
         </div>
