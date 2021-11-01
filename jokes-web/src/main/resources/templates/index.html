@@ -11,9 +11,13 @@
         <a class="inner-link" th:href="@{/jokes/add}"><div class="add-button">Dodaj nowy żart</div></a>
         <div id="categories">
             <h3 class="header">Kategorie</h3>
-            <div class="category" th:each="category: ${categories}" th:text="${category.name}">
-                kategoria
-            </div>
+            <!-- przekierowanie na każdą kategorię-->
+            <a class="inner-link" th:each="category: ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
+                <div class="category" th:text="${category.name}">
+                    kategoria
+                </div>
+            </a>
+
 
         </div>
 

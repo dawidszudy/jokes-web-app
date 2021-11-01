@@ -2,10 +2,7 @@ package pl.pp.spring.jokeswebapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
@@ -23,6 +20,14 @@ public class JokeController {
     public JokeController(CategoryService categoryService, JokeService jokeService) {
         this.categoryService = categoryService;
         this.jokeService = jokeService;
+    }
+
+    //do wyszukiwania po kategoriach
+    @RequestMapping({"/jokes"})
+    public String showIndex(Model model, @RequestParam("categoryId") Long categoryId) {
+        model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
+        model.addAttribute("categories", categoryService.findAll());
+        return "index";
     }
 
     //przekierowuje na formularz
@@ -44,7 +49,11 @@ public class JokeController {
 
         //wyszukanie kategorii dla zaznaczonych kategorii przez użytkownika
         for (Long id : categoryIds) {
-            categories.add(categoryService.findById(id));
+            //categories.add(categoryService.findById(id));
+            Category category = categoryService.findById(id);
+            category.getJokes().add(joke);  //dodawanie joke-a
+            categoryService.save(category);
+            categories.add(category);   //dodawanie kategorii do tego joke-a
         }
 
         System.out.println(categories);
