@@ -4,8 +4,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.model.Joke;
+import pl.pp.spring.jokeswebapp.model.User;
+import pl.pp.spring.jokeswebapp.model.UserProfile;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 import pl.pp.spring.jokeswebapp.services.JokeService;
+import pl.pp.spring.jokeswebapp.services.UserProfileService;
+import pl.pp.spring.jokeswebapp.services.UserService;
 
 
 @Component
@@ -13,14 +17,40 @@ public class DataLoader implements CommandLineRunner {
 
     private final JokeService jokeService;
     private final CategoryService categoryService;
+    private final UserService userService;
+    private final UserProfileService userProfileService;
 
-    public DataLoader(JokeService jokeService, CategoryService categoryService) {
+    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService, UserProfileService userProfileService) {
         this.jokeService = jokeService;
         this.categoryService = categoryService;
+        this.userService = userService;
+        this.userProfileService = userProfileService;
     }
 
     @Override
     public void run(String... args) {
+
+        User andrzejNowacki = new User();
+        andrzejNowacki.setUsername("andrzejNowacki");
+        andrzejNowacki.setEmail("andrzejNowacki@gmail.com");
+        andrzejNowacki.setPassword("qwert");
+
+        UserProfile andrzejNowackiProfile = new UserProfile();
+        andrzejNowackiProfile.setFirstName("Andrzej");
+        andrzejNowackiProfile.setLastName("Nowacki");
+
+        userProfileService.save(andrzejNowackiProfile);
+
+        andrzejNowacki.setUserProfile(andrzejNowackiProfile);
+
+        User karolWozniak = new User();
+        karolWozniak.setUsername("karolWozniak");
+        karolWozniak.setEmail("karolWozniak@gmail.com");
+        karolWozniak.setPassword("1234");
+
+        userService.save(andrzejNowacki);
+        userService.save(karolWozniak);
+
 
         Joke joke1 = getExampleJoke1();
         Joke joke2 = getExampleJoke2();
