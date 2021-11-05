@@ -3,13 +3,8 @@ package pl.pp.spring.jokeswebapp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")   //ustawianie nazwy tabeli
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") //ustawianie nazwy kolumny
-    private Long id;
+@Table(name = "user")
+public class User extends BaseEntity {
 
     @Column(name = "username")
     private String username;
@@ -22,14 +17,6 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     private UserProfile userProfile;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
