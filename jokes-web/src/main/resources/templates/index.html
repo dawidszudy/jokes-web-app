@@ -8,6 +8,7 @@
 <body>
     <div id="wrapper">
         <h1 class="header">Witaj na stronie z sucharami</h1>
+        <a class="inner-link" th:href="@{/users}"><div class="add-button">Lista użytkowników</div></a>
         <a class="inner-link" th:href="@{/jokes/add}"><div class="add-button">Dodaj nowy żart</div></a>
         <div id="categories">
             <h3 class="header">Kategorie</h3>
@@ -17,7 +18,6 @@
                     kategoria
                 </div>
             </a>
-
 
         </div>
 
