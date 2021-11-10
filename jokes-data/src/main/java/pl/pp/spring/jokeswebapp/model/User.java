@@ -15,7 +15,7 @@ public class User extends BaseEntity {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private UserProfile userProfile;
 
     public String getUsername() {

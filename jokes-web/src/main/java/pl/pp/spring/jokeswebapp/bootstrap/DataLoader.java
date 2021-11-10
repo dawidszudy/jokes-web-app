@@ -41,7 +41,7 @@ public class DataLoader implements CommandLineRunner {
 
         userProfileService.save(andrzejNowackiProfile);
 
-        andrzejNowacki.setUserProfile(andrzejNowackiProfile);
+        //andrzejNowacki.setUserProfile(andrzejNowackiProfile);
 
         User karolWozniak = new User();
         karolWozniak.setUsername("karolWozniak");
