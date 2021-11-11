@@ -18,13 +18,11 @@ public class DataLoader implements CommandLineRunner {
     private final JokeService jokeService;
     private final CategoryService categoryService;
     private final UserService userService;
-    private final UserProfileService userProfileService;
 
-    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService, UserProfileService userProfileService) {
+    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService) {
         this.jokeService = jokeService;
         this.categoryService = categoryService;
         this.userService = userService;
-        this.userProfileService = userProfileService;
     }
 
     @Override
@@ -38,16 +36,16 @@ public class DataLoader implements CommandLineRunner {
         UserProfile andrzejNowackiProfile = new UserProfile();
         andrzejNowackiProfile.setFirstName("Andrzej");
         andrzejNowackiProfile.setLastName("Nowacki");
+        andrzejNowackiProfile.setUser(andrzejNowacki);
 
-        userProfileService.save(andrzejNowackiProfile);
-
-        //andrzejNowacki.setUserProfile(andrzejNowackiProfile);
+        andrzejNowacki.setUserProfile(andrzejNowackiProfile);
 
         User karolWozniak = new User();
         karolWozniak.setUsername("karolWozniak");
         karolWozniak.setEmail("karolWozniak@gmail.com");
         karolWozniak.setPassword("1234");
 
+        //niepotrzebne save UserProfile - andrzejNowackiProfile
         userService.save(andrzejNowacki);
         userService.save(karolWozniak);
 
