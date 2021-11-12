@@ -25,6 +25,7 @@
             <div class="joke" th:each="joke: ${jokes}">
                 <h2 class="title" th:text="${joke.title}">Tytuł</h2>
                 <pre class="content" th:text="${joke.content}">Content</pre>
+                <div class="joke-info">Autor: <span th:text="${joke.user.username}"></span></div>
             </div>
         </div>
         <div class="clear: both;"></div>

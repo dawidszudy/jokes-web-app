@@ -80,3 +80,8 @@ body {
 .content {
      padding-left: 10px;
 }
+
+.joke-info {
+    text-align: center;
+    font-size: 12px;
+}
