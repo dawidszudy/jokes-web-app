@@ -8,19 +8,16 @@ import pl.pp.spring.jokeswebapp.model.User;
 import pl.pp.spring.jokeswebapp.model.UserProfile;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 import pl.pp.spring.jokeswebapp.services.JokeService;
-import pl.pp.spring.jokeswebapp.services.UserProfileService;
 import pl.pp.spring.jokeswebapp.services.UserService;
 
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final JokeService jokeService;
     private final CategoryService categoryService;
     private final UserService userService;
 
-    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService) {
-        this.jokeService = jokeService;
+    public DataLoader(CategoryService categoryService, UserService userService) {
         this.categoryService = categoryService;
         this.userService = userService;
     }
@@ -45,10 +42,6 @@ public class DataLoader implements CommandLineRunner {
         karolWozniak.setEmail("karolWozniak@gmail.com");
         karolWozniak.setPassword("1234");
 
-        //niepotrzebne save UserProfile - andrzejNowackiProfile
-        userService.save(andrzejNowacki);
-        userService.save(karolWozniak);
-
 
         Joke joke1 = getExampleJoke1();
         Joke joke2 = getExampleJoke2();
@@ -69,8 +62,20 @@ public class DataLoader implements CommandLineRunner {
         category2.getJokes().add(joke2);
         category3.getJokes().add(joke2);
 
-        jokeService.save(joke1);
-        jokeService.save(joke2);
+        //można kaskadowo - który user do joke
+        andrzejNowacki.getJokes().add(joke1);
+        andrzejNowacki.getJokes().add(joke2);
+
+        joke1.setUser(andrzejNowacki);
+        joke2.setUser(andrzejNowacki);
+
+        //niepotrzebne bo jokes zapisywanie kaskadowo przez userService
+        //jokeService.save(joke1);
+        //jokeService.save(joke2);
+
+        //na końcu bo kaskadowo zapisuje jokes
+        userService.save(andrzejNowacki);
+        userService.save(karolWozniak);
 
         System.out.println("[DataLoader] data loaded");
     }

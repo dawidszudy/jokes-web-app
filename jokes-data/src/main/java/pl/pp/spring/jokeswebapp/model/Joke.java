@@ -1,8 +1,6 @@
 package pl.pp.spring.jokeswebapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +15,9 @@ public class Joke extends BaseEntity {
     @Transient //wyłącza pole z bazy danych
     private List<Category> categories = new ArrayList<>();
 
+    @ManyToOne  //relacja wielu do jednego
+    @JoinColumn(name = "user_id")   //zmiana nazwy kolumny
+    private User user;
 
     public Joke() {
     }
@@ -48,6 +49,14 @@ public class Joke extends BaseEntity {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
