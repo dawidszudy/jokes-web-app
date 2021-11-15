@@ -1,8 +1,8 @@
 package pl.pp.spring.jokeswebapp.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Joke extends BaseEntity {
@@ -12,8 +12,11 @@ public class Joke extends BaseEntity {
     @Lob
     private String content;
 
-    @Transient //wyłącza pole z bazy danych
-    private List<Category> categories = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name="JOKE_CATEGORIES",  //ustalenie nazw
+    joinColumns = @JoinColumn(name = "JOKES_ID"),
+    inverseJoinColumns = @JoinColumn(name="CATEGORIES_ID"))
+    private Set<Category> categories = new HashSet<>();
 
     @ManyToOne  //relacja wielu do jednego
     @JoinColumn(name = "user_id")   //zmiana nazwy kolumny
@@ -43,11 +46,11 @@ public class Joke extends BaseEntity {
         this.content = content;
     }
 
-    public List<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 

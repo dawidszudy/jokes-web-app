@@ -8,8 +8,9 @@ import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 import pl.pp.spring.jokeswebapp.services.JokeService;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class JokeController {
@@ -45,7 +46,7 @@ public class JokeController {
     public String addJoke(@ModelAttribute Joke joke, @RequestParam("category") List<Long> categoryIds) {
         System.out.println(joke);
 
-        List<Category> categories = new ArrayList<>();
+        Set<Category> categories = new HashSet<>();
 
         //wyszukanie kategorii dla zaznaczonych kategorii przez użytkownika
         for (Long id : categoryIds) {
