@@ -27,15 +27,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        UserProfile andrzejNowackiProfile = new UserProfile();
+        andrzejNowackiProfile.setFirstName("Andrzej");
+        andrzejNowackiProfile.setLastName("Nowacki");
+
         User andrzejNowacki = new User();
         andrzejNowacki.setUsername("andrzejNowacki");
         andrzejNowacki.setEmail("andrzejNowacki@gmail.com");
         andrzejNowacki.setPassword("qwert");
-
-        UserProfile andrzejNowackiProfile = new UserProfile();
-        andrzejNowackiProfile.setFirstName("Andrzej");
-        andrzejNowackiProfile.setLastName("Nowacki");
-        andrzejNowackiProfile.setUser(andrzejNowacki);
 
         andrzejNowacki.setUserProfile(andrzejNowackiProfile);
 
@@ -56,17 +55,19 @@ public class DataLoader implements CommandLineRunner {
         categoryService.save(category2);
         categoryService.save(category3);
 
-        joke1.getCategories().add(category1);
-        joke2.getCategories().add(category2);
-        joke2.getCategories().add(category3);
+        joke1.addCategory(category1);
+        joke2.addCategory(category2);
+        joke2.addCategory(category3);
 
-        category1.getJokes().add(joke1);
-        category2.getJokes().add(joke2);
-        category3.getJokes().add(joke2);
+        //niepotrzebne bo metoda addCategory
+//        category1.getJokes().add(joke1);
+//        category2.getJokes().add(joke2);
+//        category3.getJokes().add(joke2);
 
         //można kaskadowo - który user do joke
-        andrzejNowacki.getJokes().add(joke1);
-        andrzejNowacki.getJokes().add(joke2);
+        //niepotrzebne bo setUser
+//        andrzejNowacki.getJokes().add(joke1);
+//        andrzejNowacki.getJokes().add(joke2);
 
         joke1.setUser(andrzejNowacki);
         joke2.setUser(andrzejNowacki);

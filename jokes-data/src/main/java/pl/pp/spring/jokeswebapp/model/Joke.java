@@ -30,6 +30,11 @@ public class Joke extends BaseEntity {
         this.content = content;
     }
 
+    public void addCategory(Category category) {
+        categories.add(category);
+        category.getJokes().add(this);
+    }
+
     public String getTitle() {
         return title;
     }
@@ -60,6 +65,7 @@ public class Joke extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+        user.getJokes().add(this);
     }
 
     @Override
