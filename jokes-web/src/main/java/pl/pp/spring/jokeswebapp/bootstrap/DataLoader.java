@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.bootstrap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.pp.spring.jokeswebapp.model.Category;
@@ -13,6 +15,8 @@ import pl.pp.spring.jokeswebapp.services.UserService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
+    private Logger log = LoggerFactory.getLogger(DataLoader.class);
 
     private final CategoryService categoryService;
     //private final JokeService jokeService;
@@ -81,7 +85,14 @@ public class DataLoader implements CommandLineRunner {
         userService.save(andrzejNowacki);
         userService.save(karolWozniak);
 
-        System.out.println("[DataLoader] data loaded");
+        log.trace("trace"); //domyślnie nie wyświetlany
+        log.debug("debug"); //domyślnie nie wyświetlany
+        log.info("info");
+        log.warn("warn");
+        log.error("error");
+
+        //System.out.println("[DataLoader] data loaded");
+        log.info("data loaded");
     }
 
     private Joke getExampleJoke1() {
