@@ -15,10 +15,12 @@ import pl.pp.spring.jokeswebapp.services.UserService;
 public class DataLoader implements CommandLineRunner {
 
     private final CategoryService categoryService;
+    //private final JokeService jokeService;
     private final UserService userService;
 
-    public DataLoader(CategoryService categoryService, UserService userService) {
+    public DataLoader(CategoryService categoryService, JokeService jokeService, UserService userService) {
         this.categoryService = categoryService;
+        //this.jokeService = jokeService;
         this.userService = userService;
     }
 
@@ -69,7 +71,8 @@ public class DataLoader implements CommandLineRunner {
         joke1.setUser(andrzejNowacki);
         joke2.setUser(andrzejNowacki);
 
-        //niepotrzebne bo jokes zapisywanie kaskadowo przez userService
+        //niepotrzebne przy db bo jokes zapisywanie kaskadowo przez userService
+        //potrzebne przy map
         //jokeService.save(joke1);
         //jokeService.save(joke2);
 
