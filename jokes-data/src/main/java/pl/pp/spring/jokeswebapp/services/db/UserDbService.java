@@ -22,10 +22,9 @@ public class UserDbService implements UserService {
 
     @Override
     public List<User> findAll() {
-        //List<User> users = new ArrayList<>();
-        //userRepository.findAll().forEach(user -> users.add(user));
-        //userRepository.findAll().forEach(users::add);
-        return (List<User>) userRepository.findAll();
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
     }
 
     @Override

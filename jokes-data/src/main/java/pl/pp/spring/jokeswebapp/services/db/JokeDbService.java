@@ -1,17 +1,16 @@
 package pl.pp.spring.jokeswebapp.services.db;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.repositories.JokeRepository;
 import pl.pp.spring.jokeswebapp.services.JokeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
-//@Primary   //adnotacja który serwis pierwszy
 @Profile("db")
 public class JokeDbService implements JokeService {
 
@@ -23,10 +22,9 @@ public class JokeDbService implements JokeService {
 
     @Override
     public List<Joke> findAll() {
-        //List<Joke> jokes = new ArrayList<>();
-        //jokeRepository.findAll().forEach(joke -> jokes.add(joke));
-        //jokeRepository.findAll().forEach(jokes::add);
-        return (List<Joke>) jokeRepository.findAll();
+        List<Joke> jokes = new ArrayList<>();
+        jokeRepository.findAll().forEach(jokes::add);
+        return jokes;
     }
 
     @Override

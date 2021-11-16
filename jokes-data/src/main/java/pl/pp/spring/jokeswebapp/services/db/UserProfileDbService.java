@@ -6,6 +6,7 @@ import pl.pp.spring.jokeswebapp.model.UserProfile;
 import pl.pp.spring.jokeswebapp.repositories.UserProfileRepository;
 import pl.pp.spring.jokeswebapp.services.UserProfileService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,10 +22,9 @@ public class UserProfileDbService implements UserProfileService {
 
     @Override
     public List<UserProfile> findAll() {
-        //List<UserProfile> userProfiles = new ArrayList<>();
-        //userProfileRepository.findAll().forEach(user -> userProfiles.add(user));
-        //userProfileRepository.findAll().forEach(userProfiles::add);
-        return (List<UserProfile>) userProfileRepository.findAll();
+        List<UserProfile> userProfiles = new ArrayList<>();
+        userProfileRepository.findAll().forEach(userProfiles::add);
+        return userProfiles;
     }
 
     @Override

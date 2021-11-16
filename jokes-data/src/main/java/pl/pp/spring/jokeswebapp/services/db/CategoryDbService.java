@@ -6,6 +6,7 @@ import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.repositories.CategoryRepository;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,10 +22,9 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public List<Category> findAll() {
-        //List<Category> categories = new ArrayList<>();
-        //categoryRepository.findAll().forEach(joke -> categories.add(joke));
-        //categoryRepository.findAll().forEach(categories::add);
-        return (List<Category>) categoryRepository.findAll();
+        List<Category> categories = new ArrayList<>();
+        categoryRepository.findAll().forEach(categories::add);
+        return categories;
     }
 
     @Override
