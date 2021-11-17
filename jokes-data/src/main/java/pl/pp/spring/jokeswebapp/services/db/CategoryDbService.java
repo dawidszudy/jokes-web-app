@@ -26,6 +26,7 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public List<Category> findAll() {
+        log.info("find all Category");
         List<Category> categories = new ArrayList<>();
         categoryRepository.findAll().forEach(categories::add);
         return categories;
@@ -33,6 +34,7 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public Category findById(Long id) {
+        log.info("find Category by id: {}", id);
         return categoryRepository.findById(id).orElse(null);
     }
 

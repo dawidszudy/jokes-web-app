@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,8 @@ import pl.pp.spring.jokeswebapp.services.JokeService;
 
 @Controller
 public class IndexController {
+
+    private Logger log = LoggerFactory.getLogger(IndexController.class);
 
     private final JokeService jokeService;
     private final CategoryService categoryService;
@@ -21,6 +25,7 @@ public class IndexController {
     public String showIndex(Model model) {
         model.addAttribute("jokes", jokeService.findAll());
         model.addAttribute("categories", categoryService.findAll());
+        log.info("showIndex");
         return "index";
     }
 }

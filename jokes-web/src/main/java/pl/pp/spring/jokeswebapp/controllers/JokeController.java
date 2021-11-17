@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,8 @@ import java.util.Set;
 @Controller
 public class JokeController {
 
+    private Logger log = LoggerFactory.getLogger(JokeController.class);
+
     private final CategoryService categoryService;
     private final JokeService jokeService;
 
@@ -28,6 +32,7 @@ public class JokeController {
     public String showIndex(Model model, @RequestParam("categoryId") Long categoryId) {
         model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
         model.addAttribute("categories", categoryService.findAll());
+        log.info("showIndex");
         return "index";
     }
 
@@ -37,6 +42,7 @@ public class JokeController {
         model.addAttribute("categories", categoryService.findAll());
         //przesłanie pustego new Joke na formularz
         model.addAttribute("joke", new Joke());
+        log.info("addJokeController");
         return "jokes/add";
     }
 
@@ -44,7 +50,8 @@ public class JokeController {
     //obsługuje wysłany formularz
     @PostMapping("/jokes/add")
     public String addJoke(@ModelAttribute Joke joke, @RequestParam("category") List<Long> categoryIds) {
-        System.out.println(joke);
+        //System.out.println(joke);
+        log.info("addJoke: {}", joke);
 
         Set<Category> categories = new HashSet<>();
 
@@ -57,7 +64,8 @@ public class JokeController {
             categories.add(category);   //dodawanie kategorii do tego joke-a
         }
 
-        System.out.println(categories);
+        //System.out.println(categories);
+        log.info("addJoke: {}", categories);
 
         //ustawienie kategorii dla dodawanego żartu
         joke.setCategories(categories);
