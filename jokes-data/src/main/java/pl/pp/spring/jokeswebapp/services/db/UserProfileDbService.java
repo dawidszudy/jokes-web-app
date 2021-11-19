@@ -39,7 +39,7 @@ public class UserProfileDbService implements UserProfileService {
 
     @Override
     public UserProfile save(UserProfile userProfile) {
-        log.info("saving profile: {}",  userProfile.getFirstName());
+        log.info("saving profile: {}", userProfile.getFirstName());
         return userProfileRepository.save(userProfile);
     }
 }

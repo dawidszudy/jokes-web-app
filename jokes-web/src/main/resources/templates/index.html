@@ -6,30 +6,33 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <div id="wrapper">
-        <h1 class="header">Witaj na stronie z sucharami</h1>
-        <a class="inner-link" th:href="@{/users}"><div class="add-button">Lista użytkowników</div></a>
-        <a class="inner-link" th:href="@{/jokes/add}"><div class="add-button">Dodaj nowy żart</div></a>
-        <div id="categories">
-            <h3 class="header">Kategorie</h3>
-            <!-- przekierowanie na każdą kategorię-->
-            <a class="inner-link" th:each="category: ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
-                <div class="category" th:text="${category.name}">
-                    kategoria
-                </div>
-            </a>
-
-        </div>
-
-        <div id="jokes">
-            <div class="joke" th:each="joke: ${jokes}">
-                <h2 class="title" th:text="${joke.title}">Tytuł</h2>
-                <pre class="content" th:text="${joke.content}">Content</pre>
-                <!-- użycie metod zamiast pól-->
-                <div class="joke-info">Autor: <span th:text="${joke.getUser().getUsername()}"></span></div>
+<div id="wrapper">
+    <h1 class="header">Witaj na stronie z sucharami</h1>
+    <a class="inner-link" th:href="@{/users}">
+        <div class="add-button">Lista użytkowników</div>
+    </a>
+    <a class="inner-link" th:href="@{/jokes/add}">
+        <div class="add-button">Dodaj nowy żart</div>
+    </a>
+    <div id="categories">
+        <h3 class="header">Kategorie</h3>
+        <!-- przekierowanie na każdą kategorię-->
+        <a class="inner-link" th:each="category: ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
+            <div class="category" th:text="${category.name}">
+                kategoria
             </div>
-        </div>
-        <div class="clear: both;"></div>
+        </a>
+
     </div>
+    <div id="jokes">
+        <div class="joke" th:each="joke: ${jokes}">
+            <h2 class="title" th:text="${joke.title}">Tytuł</h2>
+            <pre class="content" th:text="${joke.content}">Content</pre>
+            <!-- użycie metod zamiast pól-->
+            <div class="joke-info">Autor: <span th:text="${joke.getUser().getUsername()}"></span></div>
+        </div>
+    </div>
+    <div class="clear: both;"></div>
+</div>
 </body>
 </html>

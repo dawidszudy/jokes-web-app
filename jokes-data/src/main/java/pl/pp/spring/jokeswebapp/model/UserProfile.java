@@ -1,6 +1,8 @@
 package pl.pp.spring.jokeswebapp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Entity

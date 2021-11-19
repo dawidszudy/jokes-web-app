@@ -40,7 +40,7 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public Category save(Category category) {
-        log.info("saving category: {}",  category.getName());
+        log.info("saving category: {}", category.getName());
         return categoryRepository.save(category);
     }
 }

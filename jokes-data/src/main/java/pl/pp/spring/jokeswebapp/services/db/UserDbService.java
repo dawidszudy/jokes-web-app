@@ -39,7 +39,7 @@ public class UserDbService implements UserService {
 
     @Override
     public User save(User user) {
-        log.info("saving user: {}",  user.getUsername());
+        log.info("saving user: {}", user.getUsername());
         return userRepository.save(user);
     }
 }

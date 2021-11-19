@@ -13,9 +13,9 @@ public class Joke extends BaseEntity {
     private String content;
 
     @ManyToMany
-    @JoinTable(name="JOKE_CATEGORIES",  //ustalenie nazw
-    joinColumns = @JoinColumn(name = "JOKES_ID"),
-    inverseJoinColumns = @JoinColumn(name="CATEGORIES_ID"))
+    @JoinTable(name = "JOKE_CATEGORIES",  //ustalenie nazw
+            joinColumns = @JoinColumn(name = "JOKES_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CATEGORIES_ID"))
     private Set<Category> categories = new HashSet<>();
 
     @ManyToOne  //relacja wielu do jednego

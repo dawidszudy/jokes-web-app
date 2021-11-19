@@ -39,7 +39,7 @@ public class JokeDbService implements JokeService {
 
     @Override
     public Joke save(Joke joke) {
-        log.info("saving joke db: {}",  joke.getTitle());
+        log.info("saving joke db: {}", joke.getTitle());
         return jokeRepository.save(joke);
     }
 }

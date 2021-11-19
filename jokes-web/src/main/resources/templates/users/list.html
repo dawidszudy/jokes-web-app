@@ -8,27 +8,28 @@
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
-    <h1 class="header">Lista użytkowników</h1>
+<h1 class="header">Lista użytkowników</h1>
 
-    <div id="wrapper">
-        <table class="styled-table">
-            <thead>
-            <tr>
-                <th>Login</th>
-                <th>Email</th>
-                <th>Ilość kawałów</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.username}">example_Login</td>
-                <td th:text="${user.email}">example_email@gmail.com</td>
-                <td th:text="${user.jokes.size}">1</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <a class="inner-link" th:href="@{/index}"><div class="add-button" id="back-button">Powrót</div></a>
-
+<div id="wrapper">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Ilość kawałów</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}">example_Login</td>
+            <td th:text="${user.email}">example_email@gmail.com</td>
+            <td th:text="${user.jokes.size}">1</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a class="inner-link" th:href="@{/index}">
+    <div class="add-button" id="back-button">Powrót</div>
+</a>
 </body>
 </html>
