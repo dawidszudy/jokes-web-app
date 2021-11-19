@@ -8,6 +8,13 @@
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Strona główna</a>
+    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
+    <a th:href="@{/jokes/add}" class="menu-item">+ Dodaj nowy żart +</a>
+
+    <div style="clear: both;"></div>
+</div>
 <h1 class="header">Lista użytkowników</h1>
 
 <div id="wrapper">

@@ -1,5 +1,6 @@
 body {
     background-color: #DDD;
+    margin: 0px;
 }
 
 #wrapper {
@@ -84,4 +85,28 @@ body {
 .joke-info {
     text-align: center;
     font-size: 12px;
+}
+
+#menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}
+
+#menu a:hover {
+    background-color: #777;
+    cursor: pointer;
+}
+
+#menu {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
+    color: white;
+}
+
+.menu-item {
+    float: left;
 }
