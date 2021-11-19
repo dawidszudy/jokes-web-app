@@ -17,6 +17,7 @@ import java.util.List;
 public class UserDbService implements UserService {
 
     private Logger log = LoggerFactory.getLogger(UserDbService.class);
+
     private final UserRepository userRepository;
 
     public UserDbService(UserRepository userRepository) {
@@ -39,7 +40,7 @@ public class UserDbService implements UserService {
 
     @Override
     public User save(User user) {
-        log.info("saving user: {}", user.getUsername());
+        log.info("saving user db: {}", user.getUsername());
         return userRepository.save(user);
     }
 }

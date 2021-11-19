@@ -30,19 +30,19 @@ public class JokeController {
     //do wyszukiwania po kategoriach
     @RequestMapping({"/jokes"})
     public String showIndex(Model model, @RequestParam("categoryId") Long categoryId) {
+        log.info("showJokesForCategory categoryId: {}", categoryId);
         model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
         model.addAttribute("categories", categoryService.findAll());
-        log.info("showIndex");
         return "index";
     }
 
     //przekierowuje na formularz
     @GetMapping("/jokes/add")
-    public String addJokeController(Model model) {
+    public String addJokeForm(Model model) {
+        log.info("addJokeForm");
         model.addAttribute("categories", categoryService.findAll());
         //przesłanie pustego new Joke na formularz
         model.addAttribute("joke", new Joke());
-        log.info("addJokeController");
         return "jokes/add";
     }
 
@@ -50,8 +50,8 @@ public class JokeController {
     //obsługuje wysłany formularz
     @PostMapping("/jokes/add")
     public String addJoke(@ModelAttribute Joke joke, @RequestParam("category") List<Long> categoryIds) {
-        //System.out.println(joke);
-        log.info("addJoke: {}", joke);
+        log.info("addJoke joke: {}, categories: {}", joke, categoryIds);
+        //log.info("addJoke: {}", joke);
 
         Set<Category> categories = new HashSet<>();
 

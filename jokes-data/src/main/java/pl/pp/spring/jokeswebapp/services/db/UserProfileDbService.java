@@ -17,6 +17,7 @@ import java.util.List;
 public class UserProfileDbService implements UserProfileService {
 
     private Logger log = LoggerFactory.getLogger(UserProfileDbService.class);
+
     private final UserProfileRepository userProfileRepository;
 
     public UserProfileDbService(UserProfileRepository userProfileRepository) {
@@ -39,7 +40,7 @@ public class UserProfileDbService implements UserProfileService {
 
     @Override
     public UserProfile save(UserProfile userProfile) {
-        log.info("saving profile: {}", userProfile.getFirstName());
+        log.info("saving userProfile db with id: {}", userProfile.getId());
         return userProfileRepository.save(userProfile);
     }
 }

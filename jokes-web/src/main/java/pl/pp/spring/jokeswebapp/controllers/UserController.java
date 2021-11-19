@@ -19,10 +19,9 @@ public class UserController {
     }
 
     @RequestMapping({"/users"})
-    public String showIndex(Model model) {
+    public String showUserList(Model model) {
+        log.info("showUserList");
         model.addAttribute("users", userService.findAll());
-        log.info("showIndex");
         return "users/list";
     }
-
 }

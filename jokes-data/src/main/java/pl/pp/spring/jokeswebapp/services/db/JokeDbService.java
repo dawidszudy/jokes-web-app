@@ -17,6 +17,7 @@ import java.util.List;
 public class JokeDbService implements JokeService {
 
     private Logger log = LoggerFactory.getLogger(JokeDbService.class);
+
     private final JokeRepository jokeRepository;
 
     public JokeDbService(JokeRepository jokeRepository) {
@@ -39,7 +40,7 @@ public class JokeDbService implements JokeService {
 
     @Override
     public Joke save(Joke joke) {
-        log.info("saving joke db: {}", joke.getTitle());
+        log.info("saving joke db with id: {}", joke.getId());
         return jokeRepository.save(joke);
     }
 }

@@ -23,9 +23,9 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index"})
     public String showIndex(Model model) {
+        log.info("showIndex");
         model.addAttribute("jokes", jokeService.findAll());
         model.addAttribute("categories", categoryService.findAll());
-        log.info("showIndex");
         return "index";
     }
 }
