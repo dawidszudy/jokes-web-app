@@ -9,18 +9,13 @@
 <div id="menu">
     <a th:href="@{/}" class="menu-item">Strona główna</a>
     <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
-    <a th:href="@{/jokes/add}" class="menu-item">+ Dodaj nowy żart +</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
 
     <div style="clear: both;"></div>
 </div>
 <div id="wrapper">
     <h1 class="header">Witaj na stronie z sucharami</h1>
-    <a class="inner-link" th:href="@{/users}">
-        <div class="add-button">Lista użytkowników</div>
-    </a>
-    <a class="inner-link" th:href="@{/jokes/add}">
-        <div class="add-button">Dodaj nowy żart</div>
-    </a>
+
     <div id="categories">
         <h3 class="header">Kategorie</h3>
         <!-- przekierowanie na każdą kategorię-->
