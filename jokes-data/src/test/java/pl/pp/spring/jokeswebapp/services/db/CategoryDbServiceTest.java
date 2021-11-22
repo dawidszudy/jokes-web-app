@@ -8,10 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.repositories.CategoryRepository;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -36,10 +33,8 @@ class CategoryDbServiceTest {
     void findAllShouldReturnEmptyList() {
         //given zamodelowanie na sztywno co zwrócimy
         when(categoryRepository.findAll()).thenReturn(new HashSet<>());
-
         //when wykonanie
         List<Category> categories = categoryDbService.findAll();
-
         //then sprawdzenie
         assertEquals(0, categories.size());
     }
