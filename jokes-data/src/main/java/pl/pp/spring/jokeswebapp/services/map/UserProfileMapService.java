@@ -10,4 +10,7 @@ import pl.pp.spring.jokeswebapp.services.UserProfileService;
 @Profile("map")
 public class UserProfileMapService extends BaseMapService<UserProfile> implements UserProfileService {
 
+    public UserProfileMapService() {
+        super("UserProfile");
+    }
 }

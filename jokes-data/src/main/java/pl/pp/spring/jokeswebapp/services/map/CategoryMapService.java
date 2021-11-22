@@ -10,4 +10,7 @@ import pl.pp.spring.jokeswebapp.services.CategoryService;
 @Profile("map")
 public class CategoryMapService extends BaseMapService<Category> implements CategoryService {
 
+    public CategoryMapService() {
+        super("category");
+    }
 }

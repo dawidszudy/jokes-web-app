@@ -14,17 +14,23 @@ public abstract class BaseMapService<E extends BaseEntity> implements BaseServic
 
     private Logger log = LoggerFactory.getLogger(BaseMapService.class);
     protected Map<Long, E> map = new HashMap<>();
+    private String type;
+
+    public BaseMapService(String type) {
+        this.type = type;
+    }
 
     @Override
     public List<E> findAll() {
-        log.info("find all");
+        log.info("find all {}", type);
         return new ArrayList<>(map.values());
     }
 
     @Override
     public E findById(Long id) {
-        log.info("find by Id: {}", id);
-        return map.get(id);
+        E e = map.get(id);
+        log.info("find by Id: {} , {}", id, e.getClass());
+        return e;
     }
 
     @Override

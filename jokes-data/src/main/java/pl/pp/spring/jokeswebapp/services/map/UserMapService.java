@@ -14,9 +14,7 @@ public class UserMapService extends BaseMapService<User> implements UserService 
 
     private Logger log = LoggerFactory.getLogger(UserMapService.class);
 
-    @Override
-    public User save(User user) {
-        log.info("saving user map: {}", user.getUsername());
-        return super.save(user);
+    public UserMapService() {
+        super("user");
     }
 }
