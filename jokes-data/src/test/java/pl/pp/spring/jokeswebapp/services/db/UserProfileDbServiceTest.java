@@ -10,9 +10,13 @@ import pl.pp.spring.jokeswebapp.repositories.UserProfileRepository;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -45,10 +49,27 @@ class UserProfileDbServiceTest {
     }
 
     @Test
-    void findById() {
+    void findByNotExistId() {
+        when(userProfileRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        UserProfile userProfile = userProfileDbService.findById(1L);
+
+        assertNull(userProfile);
+    }
+
+    @Test
+    void findByExistId() {
+        when(userProfileRepository.findById(anyLong())).thenReturn(Optional.of(userProfile));
+
+        UserProfile userProfile = userProfileDbService.findById(1L);
+
+        assertNotNull(userProfile);
     }
 
     @Test
     void save() {
+        userProfileDbService.save(userProfile);
+
+        verify(userProfileRepository).save(any(UserProfile.class));
     }
 }
