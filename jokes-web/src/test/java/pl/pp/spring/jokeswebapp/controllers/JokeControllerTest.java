@@ -88,6 +88,7 @@ class JokeControllerTest {
 
     @Test
     void addJoke() throws Exception {
+        //zamkowanie wartości na sztywno metody z serwisu która jest wywoływana
         when(categoryService.findById(anyLong())).thenReturn(category);
 
         mockMvc.perform(post("/jokes/add?category=1"))
