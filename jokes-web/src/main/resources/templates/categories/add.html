@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj nową kategorię</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Strona główna</a>
+    <a th:href="@{/categories}" class="menu-item">Kategorie</a>
+    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
+
+    <div style="clear: both;"></div>
+</div>
+<h1 class="header">Dodaj nową kategorię</h1>
+
+<div id="form-container">
+    <!-- gdzie zostanie przekierowane -->
+    <form method="post" th:action="@{/categories/add}" th:object="${category}">
+        <input type="text" placeholder="nazwa kategorii" th:field="*{name}">
+
+        <input type="submit" value="Dodaj">
+
+    </form>
+</div>
+
+</body>
+</html>

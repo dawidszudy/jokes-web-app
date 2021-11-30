@@ -95,3 +95,20 @@ body {
 .menu-item {
     float: left;
 }
+
+.add-button {
+    background-color: #009879;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    padding: 10px 12px;
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: #00A98A;
+}
