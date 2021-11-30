@@ -31,8 +31,6 @@ class UserControllerTest {
 
     private MockMvc mockMvc;
 
-    private User user = new User();
-
 
     @BeforeEach
     void setUp() {
