@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -64,4 +66,21 @@ class CategoryControllerTest {
 
         verify(categoryService).findAll();
     }
+
+    @Test
+    void testShowCategoryForm() throws Exception {
+        mockMvc.perform(get("/categories/add"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("categories/add"));
+    }
+
+    @Test
+    void processCategoryForm() throws Exception {
+        mockMvc.perform(post("/categories/add"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/categories"));
+
+        verify(categoryService).save(any(Category.class));
+    }
+
 }
