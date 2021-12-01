@@ -32,7 +32,7 @@
             <h2 class="title" th:text="${joke.title}">Tytuł</h2>
             <pre class="content" th:text="${joke.content}">Content</pre>
             <!-- użycie metod zamiast pól-->
-            <div class="joke-info">Autor: <span th:text="${joke.getUser().getUsername()}"></span></div>
+            <div class="joke-info">Autor: <span th:text="${joke.getUser()?.getUsername()}"></span></div>
         </div>
     </div>
     <div class="clear: both;"></div>
