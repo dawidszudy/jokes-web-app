@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
@@ -30,16 +31,27 @@ public class CategoryController {
 
     //przekierowuje na formularz
     @GetMapping("/categories/add")
-    public String showCategoryForm(Model model) {
+    public String showAddCategoryForm(Model model) {
         log.info("showCategoryForm");
 
         model.addAttribute("category", new Category());
 
-        return "categories/add";
+        return "categories/save";
+    }
+
+    @GetMapping("/categories/{categoryId}/edit") //wprowadzenie zmiennej
+    public String showEditCategoryForm(@PathVariable Long categoryId, Model model) {
+        log.info("showCategoryForm");
+
+        //pobranie tego id kategorii
+        Category category = categoryService.findById(categoryId);
+        model.addAttribute("category", category);
+
+        return "categories/save";
     }
 
 
-    @PostMapping("/categories/add")
+    @PostMapping("/categories/save")
     public String processCategoryForm(@ModelAttribute Category category) {
         log.info("processCategoryForm");
 

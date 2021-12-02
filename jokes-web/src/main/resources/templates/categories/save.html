@@ -19,10 +19,11 @@
 
 <div id="form-container">
     <!-- gdzie zostanie przekierowane -->
-    <form method="post" th:action="@{/categories/add}" th:object="${category}">
+    <form method="post" th:action="@{/categories/save}" th:object="${category}">
+        <input type="hidden" th:field="*{id}">
         <input type="text" placeholder="nazwa kategorii" th:field="*{name}">
 
-        <input type="submit" value="Dodaj">
+        <input type="submit" value="Zapisz">
 
     </form>
 </div>
