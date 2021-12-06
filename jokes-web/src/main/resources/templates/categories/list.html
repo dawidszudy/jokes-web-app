@@ -34,7 +34,7 @@
         <tr th:each="category : ${categories}">
             <td th:text="${category.name}">name</td>
             <td><a th:href="@{/categories/{categoryId}/edit(categoryId=${category.id})}">Edytuj</a></td>
-            <td>Usuń</td>
+            <td><a th:href="@{/categories/{categoryId}/delete(categoryId=${category.id})}">Usuń</a></td>
         </tr>
         </tbody>
     </table>

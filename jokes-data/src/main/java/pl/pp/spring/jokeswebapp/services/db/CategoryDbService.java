@@ -43,4 +43,17 @@ public class CategoryDbService implements CategoryService {
         log.info("saving category: {}", category.getName());
         return categoryRepository.save(category);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        log.info("delete category by id: {}", id);
+
+        //szukanie joków dla kategorii i usuwanie relacji między tymi jokami a kategorią
+        Category category = categoryRepository.findById(id).orElseThrow();
+        category.getJokes().forEach(joke -> {
+            joke.getCategories().remove(category);
+        });
+
+        categoryRepository.deleteById(id);
+    }
 }
