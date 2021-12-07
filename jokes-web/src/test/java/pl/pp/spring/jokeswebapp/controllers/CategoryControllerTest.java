@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,6 +33,8 @@ class CategoryControllerTest {
     private CategoryController categoryController;
 
     private MockMvc mockMvc;
+
+    private Category category1 = new Category("kategoria 1");
 
 
     @BeforeEach
@@ -71,16 +74,39 @@ class CategoryControllerTest {
     void testShowCategoryForm() throws Exception {
         mockMvc.perform(get("/categories/add"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("categories/add"));
+                .andExpect(model().attributeExists("category"))
+                .andExpect(view().name("categories/save"));
     }
 
     @Test
     void processCategoryForm() throws Exception {
-        mockMvc.perform(post("/categories/add"))
+        mockMvc.perform(post("/categories/save"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/categories"));
 
         verify(categoryService).save(any(Category.class));
+    }
+
+    @Test
+    void showEditCategoryForm() throws Exception {
+        when(categoryService.findById(anyLong())).thenReturn(category1);
+
+        //przykładowa wartość 2 typu Long
+        mockMvc.perform(get("/categories/2/edit"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("category")) //czy istnieje
+                .andExpect(view().name("categories/save"));
+
+        verify(categoryService).findById(2L);
+    }
+
+    @Test
+    void deleteCategory() throws Exception {
+        mockMvc.perform(get("/categories/1/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/categories"));
+
+        verify(categoryService).deleteById(1L);
     }
 
 }
