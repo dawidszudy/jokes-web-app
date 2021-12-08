@@ -72,4 +72,11 @@ class JokeDbServiceTest {
 
         verify(jokeRepository).save(any(Joke.class));
     }
+
+    @Test
+    void deleteById() {
+        jokeDbService.deleteById(anyLong());
+
+        verify(jokeRepository).deleteById(anyLong());
+    }
 }

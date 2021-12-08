@@ -75,4 +75,11 @@ class UserDbServiceTest {
 
         verify(userRepository).save(any(User.class));
     }
+
+    @Test
+    void deleteById() {
+        userDbService.deleteById(anyLong());
+
+        verify(userRepository).deleteById(anyLong());
+    }
 }

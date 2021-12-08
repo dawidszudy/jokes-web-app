@@ -72,4 +72,11 @@ class UserProfileDbServiceTest {
 
         verify(userProfileRepository).save(any(UserProfile.class));
     }
+
+    @Test
+    void deleteById() {
+        userProfileDbService.deleteById(anyLong());
+
+        verify(userProfileRepository).deleteById(anyLong());
+    }
 }

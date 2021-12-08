@@ -74,4 +74,14 @@ class CategoryDbServiceTest {
         verify(categoryRepository).save(any(Category.class));
     }
 
+    @Test
+    void deleteById() {
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(category));
+
+        categoryDbService.deleteById(anyLong());
+
+        verify(categoryRepository).findById(anyLong());
+        verify(categoryRepository).deleteById(anyLong());
+    }
+
 }
