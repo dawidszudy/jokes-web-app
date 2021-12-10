@@ -30,4 +30,17 @@ public class ExceptionHandlerController {
 
         return modelAndView;
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST) //wzięte klasy wyjątku
+    @ExceptionHandler(NumberFormatException.class) //który wyjątek określamy
+    public ModelAndView handleNumberFormatError(Exception exception) {
+        log.warn("Handle not number format error: {}", exception.getMessage());
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("errors/400");
+        modelAndView.addObject("message", exception.getMessage());
+
+        return modelAndView;
+    }
 }
