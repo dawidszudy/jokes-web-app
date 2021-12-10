@@ -39,7 +39,10 @@ class CategoryControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(categoryController)
+                .setControllerAdvice(new ExceptionHandlerController())
+                .build();
     }
 
     @Test
@@ -116,7 +119,8 @@ class CategoryControllerTest {
         //when(categoryService.deleteById(anyLong())).thenThrow(NotFoundException.class);
 
         mockMvc.perform(get("/categories/1/delete"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound())
+                .andExpect(view().name("errors/404"));
 
         verify(categoryService).deleteById(1L);
     }
