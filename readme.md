@@ -43,7 +43,8 @@ An application that allows users to view and add jokes in the appropriate catego
 - delete and edition each of one categories
 
 ## Usage
-Run main method in JokesWebAppApplication class.
+Run main method in JokesWebAppApplication class 
+and enter "localhost:8080" to browser window.
 
 ## Room for Improvement
 
