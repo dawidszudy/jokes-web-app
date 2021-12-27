@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
@@ -11,6 +13,7 @@ public class Category extends BaseEntity {
     private String name;
 
     @ManyToMany(mappedBy = "categories") //likwidacja drugiej tabeli
+    @JsonIgnore     //ignorowanie przy wypisywaniu w restowym api
     private Set<Joke> jokes = new HashSet<>();
 
 
