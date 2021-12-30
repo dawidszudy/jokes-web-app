@@ -26,7 +26,6 @@ public class CategoryRestController {
     public ResponseEntity<List<Category>> getAll() {
         log.info("getAll");
 
-        //gdy status okej zwracamy zawartość listy
         return ResponseEntity.ok(categoryService.findAll());
     }
 
@@ -46,14 +45,13 @@ public class CategoryRestController {
     public ResponseEntity<Category> add(@RequestBody Category category) {
         log.info("add");
 
-        //zapisanie kategorii
         Category savedCategory = categoryService.save(category);
         return ResponseEntity.created(URI.create("/api/categories/" + savedCategory.getId())).body(savedCategory);
     }
 
     @DeleteMapping({"/api/categories/{id}"})
     public ResponseEntity<Category> delete(@PathVariable Long id) {
-        log.info("getById");
+        log.info("delete");
 
         try {
             categoryService.deleteById(id);
@@ -61,5 +59,14 @@ public class CategoryRestController {
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PutMapping({"/api/categories/{id}"})
+    public ResponseEntity<Category> update(@RequestBody Category category, @PathVariable Long id) {
+        log.info("update");
+
+        category.setId(id);
+        Category savedCategory = categoryService.save(category);
+        return ResponseEntity.ok(savedCategory);
     }
 }
