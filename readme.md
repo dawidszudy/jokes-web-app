@@ -21,6 +21,7 @@ An application that allows users to view and add jokes in the appropriate catego
 - Java
 - Spring
 - Mockito
+- JUnit
 - Hibernate
 - H2
 - CSS
