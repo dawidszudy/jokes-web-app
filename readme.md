@@ -5,7 +5,7 @@ An application that allows users to view and add jokes in the appropriate catego
 
 ## Screenshots
 
-### Main page
+### Homepage
 ![main page](img/main.png)
 
 ### List of categories

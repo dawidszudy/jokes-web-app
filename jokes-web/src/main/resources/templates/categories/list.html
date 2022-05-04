@@ -2,39 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Suchary - lista kategorii</title>
+    <title>Jokes - list of categories</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div id="menu">
-    <a th:href="@{/}" class="menu-item">Strona główna</a>
-    <a th:href="@{/categories}" class="menu-item">Kategorie</a>
-    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
-    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
+    <a th:href="@{/}" class="menu-item">Homepage</a>
+    <a th:href="@{/categories}" class="menu-item">Categories</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Add new joke</a>
 
     <div style="clear: both;"></div>
 </div>
-<h1 class="header">Lista Kategorii</h1>
+<h1 class="header">List of categories</h1>
 
 <div id="wrapper">
     <a class="inner-link" th:href="@{/categories/add}">
-        <div class="add-button">Dodaj nową kategorię</div>
+        <div class="add-button">Add new category</div>
     </a>
     <table class="styled-table">
         <thead>
         <tr>
-            <th>Nazwa</th>
-            <th>Edytuj</th>
-            <th>Usuń</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Remove</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="category : ${categories}">
             <td th:text="${category.name}">name</td>
-            <td><a th:href="@{/categories/{categoryId}/edit(categoryId=${category.id})}">Edytuj</a></td>
-            <td><a th:href="@{/categories/{categoryId}/delete(categoryId=${category.id})}">Usuń</a></td>
+            <td><a th:href="@{/categories/{categoryId}/edit(categoryId=${category.id})}">Edit</a></td>
+            <td><a th:href="@{/categories/{categoryId}/delete(categoryId=${category.id})}">Remove</a></td>
         </tr>
         </tbody>
     </table>

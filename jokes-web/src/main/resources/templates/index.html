@@ -2,27 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Suchary</title>
+    <title>Jokes</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
 <div id="menu">
-    <a th:href="@{/}" class="menu-item">Strona główna</a>
-    <a th:href="@{/categories}" class="menu-item">Kategorie</a>
-    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
-    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
+    <a th:href="@{/}" class="menu-item">Homepage</a>
+    <a th:href="@{/categories}" class="menu-item">Categories</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Add new joke</a>
 
     <div style="clear: both;"></div>
 </div>
 <div id="wrapper">
-    <h1 class="header">Witaj na stronie z sucharami</h1>
+    <h1 class="header">Welcome to the jokes page</h1>
 
     <div id="categories">
-        <h3 class="header">Kategorie</h3>
-        <!-- przekierowanie na każdą kategorię-->
+        <h3 class="header">Categories</h3>
+        <!-- redirection to each category-->
         <a class="inner-link" th:each="category: ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
             <div class="category" th:text="${category.name}">
-                kategoria
+                category
             </div>
         </a>
 
@@ -31,8 +31,8 @@
         <div class="joke" th:each="joke: ${jokes}">
             <h2 class="title" th:text="${joke.title}">Tytuł</h2>
             <pre class="content" th:text="${joke.content}">Content</pre>
-            <!-- użycie metod zamiast pól-->
-            <div class="joke-info">Autor: <span th:text="${joke.getUser()?.getUsername()}"></span></div>
+            <!-- using methods instead of fields-->
+            <div class="joke-info">Author: <span th:text="${joke.getUser()?.getUsername()}"></span></div>
         </div>
     </div>
     <div class="clear: both;"></div>

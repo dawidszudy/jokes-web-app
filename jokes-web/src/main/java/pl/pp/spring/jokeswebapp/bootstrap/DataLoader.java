@@ -32,28 +32,28 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
 
         UserProfile andrzejNowackiProfile = new UserProfile();
-        andrzejNowackiProfile.setFirstName("Andrzej");
+        andrzejNowackiProfile.setFirstName("Andrew");
         andrzejNowackiProfile.setLastName("Nowacki");
 
         User andrzejNowacki = new User();
-        andrzejNowacki.setUsername("andrzejNowacki");
-        andrzejNowacki.setEmail("andrzejNowacki@gmail.com");
+        andrzejNowacki.setUsername("andrewNowacki");
+        andrzejNowacki.setEmail("andrewNowacki@gmail.com");
         andrzejNowacki.setPassword("qwert");
 
         andrzejNowacki.setUserProfile(andrzejNowackiProfile);
 
         User karolWozniak = new User();
-        karolWozniak.setUsername("karolWozniak");
-        karolWozniak.setEmail("karolWozniak@gmail.com");
+        karolWozniak.setUsername("carolWozniak");
+        karolWozniak.setEmail("carolWozniak@gmail.com");
         karolWozniak.setPassword("1234");
 
 
         Joke joke1 = getExampleJoke1();
         Joke joke2 = getExampleJoke2();
 
-        Category category1 = new Category("Teściowa");
-        Category category2 = new Category("Jaś");
-        Category category3 = new Category("Szkoła");
+        Category category1 = new Category("Mother-in-law");
+        Category category2 = new Category("Jonny");
+        Category category3 = new Category("School");
 
         categoryService.save(category1);
         categoryService.save(category2);
@@ -63,13 +63,13 @@ public class DataLoader implements CommandLineRunner {
         joke2.addCategory(category2);
         joke2.addCategory(category3);
 
-        //niepotrzebne bo metoda addCategory
+        //unnecessary because addCategory method
 //        category1.getJokes().add(joke1);
 //        category2.getJokes().add(joke2);
 //        category3.getJokes().add(joke2);
 
-        //można kaskadowo - który user do joke
-        //niepotrzebne bo setUser
+        //can cascade - which user to joke
+        //unnecessary because setUser
 //        andrzejNowacki.getJokes().add(joke1);
 //        andrzejNowacki.getJokes().add(joke2);
 
@@ -85,8 +85,8 @@ public class DataLoader implements CommandLineRunner {
         userService.save(andrzejNowacki);
         userService.save(karolWozniak);
 
-        log.trace("trace"); //domyślnie nie wyświetlany
-        log.debug("debug"); //domyślnie nie wyświetlany
+        log.trace("trace"); //not displayed by default
+        log.debug("debug"); //not displayed by default
         log.info("info");
         log.warn("warn");
         log.error("error");
@@ -97,22 +97,23 @@ public class DataLoader implements CommandLineRunner {
 
     private Joke getExampleJoke1() {
         Joke joke1 = new Joke();
-        joke1.setTitle("Okup za teściową");
-        joke1.setContent("Mężczyzna odbiera telefon:\n" +
-                "-Słucham\n" +
-                "*Mamy twoją teściową. musisz zapłacić 100 000 zł okupu - słyszy w telefonie.\n" +
-                "-A co jeśli nie zapłacę? - Zastanawia się mężczyzna.\n" +
-                "*To ją sklonujemy! - odpowiada porywacz.");
+        joke1.setTitle("Ransom for mother-in-law");
+        joke1.setContent("A man take the phone:\n" +
+                "-Please\n" +
+                "*We have your mother-in-law. you have to pay a ransom of PLN 100,000 - he hears on the phone.\n" +
+                "-What if I don't pay? The man wonders.\n" +
+                "*Then we'll clone her!.");
         return joke1;
     }
 
     private Joke getExampleJoke2() {
         Joke joke2 = new Joke();
-        joke2.setTitle("Jaś i Partia");
-        joke2.setContent("-Drogie dzieci, partia jest dla nas jak najlepszy przyjaciel.\n" +
-                "*Proszę Pani! Partia jest dla nas jak brat.\n" +
-                "-Brawo Jasiu. Brawo! Wyjaśnij wszystkim dzieciom dlaczego partia jest dla nas jak brat.\n" +
-                "*A bo przyjaciela można wybrać, a brat jaki się pieron trafi z takim musisz wytrzymać.");
+        joke2.setTitle("Johnny and political party");
+        joke2.setContent("-Dear children, the party is like a best friend to us.\n" +
+                "*Ma'am! The Party is like a brother to us.\n" +
+                "-Bravo, Johnny. Explain to all the children why the political party is like a brother to us.\n" +
+                "*Because you can choose your friend, brother whoever happens to be, \n" +
+                " you're gonna have to withstand with him.");
         return joke2;
     }
 

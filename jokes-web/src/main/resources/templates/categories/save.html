@@ -2,28 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj nową kategorię</title>
+    <title>Add new category</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div id="menu">
-    <a th:href="@{/}" class="menu-item">Strona główna</a>
-    <a th:href="@{/categories}" class="menu-item">Kategorie</a>
-    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
-    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
+    <a th:href="@{/}" class="menu-item">Homepage</a>
+    <a th:href="@{/categories}" class="menu-item">Categories</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Add new joke</a>
 
     <div style="clear: both;"></div>
 </div>
-<h1 class="header">Dodaj nową kategorię</h1>
+<h1 class="header">Add new category</h1>
 
 <div id="form-container">
     <!-- gdzie zostanie przekierowane -->
     <form method="post" th:action="@{/categories/save}" th:object="${category}">
         <input type="hidden" th:field="*{id}">
-        <input type="text" placeholder="nazwa kategorii" th:field="*{name}">
+        <input type="text" placeholder="category name" th:field="*{name}">
 
-        <input type="submit" value="Zapisz">
+        <input type="submit" value="Save">
 
     </form>
 </div>

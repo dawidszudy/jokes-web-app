@@ -2,21 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Suchary - lista użytkowników</title>
+    <title>Jokes - user list</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div id="menu">
-    <a th:href="@{/}" class="menu-item">Strona główna</a>
-    <a th:href="@{/categories}" class="menu-item">Kategorie</a>
-    <a th:href="@{/users}" class="menu-item">Użytkownicy</a>
-    <a th:href="@{/jokes/add}" class="menu-item">Dodaj nowy żart</a>
+    <a th:href="@{/}" class="menu-item">Homepage</a>
+    <a th:href="@{/categories}" class="menu-item">Categories</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">Add new joke</a>
 
     <div style="clear: both;"></div>
 </div>
-<h1 class="header">Lista użytkowników</h1>
+<h1 class="header">User list</h1>
 
 <div id="wrapper">
     <table class="styled-table">
@@ -24,7 +24,7 @@
         <tr>
             <th>Login</th>
             <th>Email</th>
-            <th>Ilość kawałów</th>
+            <th>Number of jokes</th>
         </tr>
         </thead>
         <tbody>
